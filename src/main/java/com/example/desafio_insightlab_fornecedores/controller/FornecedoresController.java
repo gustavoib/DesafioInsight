@@ -29,6 +29,16 @@ public class FornecedoresController {
         return ResponseEntity.status(HttpStatus.OK).body(fornecedoresServices.getOneFornecedores(id));
     }
 
+    @GetMapping("/list/order/{order}")
+    public ResponseEntity<List<FornecedoresModel>> getAllFornecedoresOrderByCreatedAt(@PathVariable("order") String order) {
+        return ResponseEntity.status(HttpStatus.OK).body(fornecedoresServices.getAllFornecedoresOrderByCreatedAt(order));
+    }
+
+    @GetMapping("/list/category/{category}")
+    public ResponseEntity<List<FornecedoresModel>> getAllFornecedoresOrderByCategoria(@PathVariable("category") String categoria) {
+        return ResponseEntity.status(HttpStatus.OK).body(fornecedoresServices.getAllFornecedoresByCategoria(categoria));
+    }
+
     @PostMapping("/save")
     public ResponseEntity <FornecedoresModel> saveFornecedores(@RequestBody @Valid FornecedoresRecordDto fornecedor) {
         return ResponseEntity.status(HttpStatus.CREATED).body(fornecedoresServices.saveFornecedores(fornecedor));
@@ -44,4 +54,5 @@ public class FornecedoresController {
         fornecedoresServices.deleteFornecedores(id);
         return ResponseEntity.status(HttpStatus.OK).body("Fornecedor deletado com sucesso");
     }
+
 }
