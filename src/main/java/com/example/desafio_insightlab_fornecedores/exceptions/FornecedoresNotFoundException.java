@@ -4,4 +4,5 @@ public class FornecedoresNotFoundException extends RuntimeException {
     public FornecedoresNotFoundException() {
         super("Fornecedor não encontrado.");
     }
+    public FornecedoresNotFoundException(String message) { super(message); }
 }
