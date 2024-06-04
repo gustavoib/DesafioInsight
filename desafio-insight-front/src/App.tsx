@@ -1,38 +1,15 @@
-import { Fornecedores } from './interfaces/Fornecedores'
-import { Table } from 'antd'
-
+import 'antd/dist/reset.css';
+import AppRoutes from './AppRoutes';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
-  const data: Fornecedores[] = []
-
-  const columns = [
-    {
-      title: 'Nome',
-      dataIndex: 'name',
-      key: 'name',
-    },
-    {
-      title: 'Categoria',
-      dataIndex: 'category',
-      key: 'category',
-    },
-    {
-      title: 'Endereço',
-      dataIndex: 'address',
-      key: 'address',
-    },
-    {
-      title: 'Cadastrado em',
-      dataIndex: 'created_at',
-      key: 'created_at',
-    }
-  ];
-
   return (
-    <div className="App">
-      <Table dataSource={data} columns={columns} />
-    </div>
+    <>
+      <AppRoutes />
+      <ToastContainer />
+    </>
   )
 }
 
-export default App
+export default App;

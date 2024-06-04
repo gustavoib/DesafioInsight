@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { api, loginUser, registerFornecedor, getAllFornecedores, getOneFornecedores, updateFornecedores, delFornecedor } from '../services/api.ts';
+import { api, loginUser, registerFornecedor, getAllFornecedores, getOneFornecedores, delFornecedor, updateFornecedores } from '../services/api.ts';
 
 export const AuthContext = createContext({} as any);
 
@@ -27,8 +27,6 @@ export const AuthProvider = ({children}:any) => {
         
         const loggedUser = response.data.user;
         const token = response.data.token
-
-        console.log('loggedUser', loggedUser);
 
         localStorage.setItem('user', JSON.stringify(loggedUser));
         localStorage.setItem('token', token);
