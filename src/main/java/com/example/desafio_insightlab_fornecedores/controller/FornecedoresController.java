@@ -1,6 +1,6 @@
 package com.example.desafio_insightlab_fornecedores.controller;
 
-import com.example.desafio_insightlab_fornecedores.dtos.FornecedoresRecordDto;
+import com.example.desafio_insightlab_fornecedores.dtos.FornecedoresDto;
 import com.example.desafio_insightlab_fornecedores.models.FornecedoresModel;
 import com.example.desafio_insightlab_fornecedores.services.FornecedoresServices;
 import jakarta.validation.Valid;
@@ -14,6 +14,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("fornecedores")
+@CrossOrigin(origins = "*")
 public class FornecedoresController {
 
     @Autowired
@@ -40,12 +41,12 @@ public class FornecedoresController {
     }
 
     @PostMapping("/save")
-    public ResponseEntity <FornecedoresModel> saveFornecedores(@RequestBody @Valid FornecedoresRecordDto fornecedor) {
+    public ResponseEntity <FornecedoresModel> saveFornecedores(@RequestBody @Valid FornecedoresDto fornecedor) {
         return ResponseEntity.status(HttpStatus.CREATED).body(fornecedoresServices.saveFornecedores(fornecedor));
     }
 
     @PutMapping("/update/{id}")
-    public ResponseEntity<FornecedoresModel> updateFornecedores(@PathVariable("id") UUID id, @RequestBody @Valid FornecedoresRecordDto fornecedor) {
+    public ResponseEntity<FornecedoresModel> updateFornecedores(@PathVariable("id") UUID id, @RequestBody @Valid FornecedoresDto fornecedor) {
         return ResponseEntity.status(HttpStatus.OK).body(fornecedoresServices.updateFornecedores(id, fornecedor));
     }
 

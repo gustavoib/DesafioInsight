@@ -1,6 +1,6 @@
 package com.example.desafio_insightlab_fornecedores.services;
 
-import com.example.desafio_insightlab_fornecedores.dtos.FornecedoresRecordDto;
+import com.example.desafio_insightlab_fornecedores.dtos.FornecedoresDto;
 import com.example.desafio_insightlab_fornecedores.exceptions.FornecedoresDetailsException;
 import com.example.desafio_insightlab_fornecedores.exceptions.FornecedoresNotFoundException;
 import com.example.desafio_insightlab_fornecedores.models.FornecedoresModel;
@@ -33,7 +33,7 @@ public class FornecedoresServices {
     }
 
     /* cadastrar um fornecedor - requisito do desafio */
-    public FornecedoresModel saveFornecedores(FornecedoresRecordDto fornecedorRecordDto) {
+    public FornecedoresModel saveFornecedores(FornecedoresDto fornecedorRecordDto) {
         Utils.validateCnpj(fornecedorRecordDto.cnpj());
         Utils.validateTelefone(fornecedorRecordDto.telefone());
         Utils.validateCep(fornecedorRecordDto.cep());
@@ -44,7 +44,7 @@ public class FornecedoresServices {
     }
 
     /* editar um fornecedor - requisito do desafio */
-    public FornecedoresModel updateFornecedores(UUID id, FornecedoresRecordDto fornecedorRecordDto) {
+    public FornecedoresModel updateFornecedores(UUID id, FornecedoresDto fornecedorRecordDto) {
         FornecedoresModel fornecedor = fornecedoresRepository.findById(id)
                 .orElseThrow(() -> new FornecedoresNotFoundException());
 

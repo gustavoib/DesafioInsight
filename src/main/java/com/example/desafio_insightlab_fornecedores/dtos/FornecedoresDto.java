@@ -2,11 +2,8 @@ package com.example.desafio_insightlab_fornecedores.dtos;
 
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
-import java.time.LocalDateTime;
-
-public record FornecedoresRecordDto(
+public record FornecedoresDto(
         @NotBlank String nome,
         @NotBlank String cnpj,
         @NotBlank String telefone,
