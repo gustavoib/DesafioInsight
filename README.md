@@ -8,10 +8,11 @@ O desafio consiste em criar uma aplicação que permita o cadastro de fornecedor
 
 ## Detalhes da Solução
 
-A aplicação foi desenvolvida utilizando o framework Spring Boot, cumprindo a restrição do desafio para a implementação do backend. Foram utilizadas diversas dependências do Spring Boot, como Spring Data JPA, Spring Web e Spring Security, além do banco de dados PostgreSQL.
+A aplicação foi desenvolvida utilizando o framework Spring Boot, cumprindo a restrição do desafio para a implementação do backend. Foram utilizadas diversas dependências do Spring Boot, como Spring Data JPA, Spring Web e Spring Security, além do banco de dados PostgreSQL e Maven para gerenciamento de dependências.
 
 ### Tecnologias Utilizadas
 
+- Maven
 - Spring Boot
 - Spring Data JPA
 - Spring Web
