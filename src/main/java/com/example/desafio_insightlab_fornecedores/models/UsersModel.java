@@ -30,11 +30,6 @@ public class UsersModel implements UserDetails {
     @Column(name = "password")
     private String password;
 
-    public UsersModel(String username, String encodedPassword) {
-        this.username = username;
-        this.password = encodedPassword;
-    }
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
         return null;
