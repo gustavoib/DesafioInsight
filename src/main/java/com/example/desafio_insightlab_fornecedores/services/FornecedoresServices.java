@@ -64,20 +64,4 @@ public class FornecedoresServices {
                 .orElseThrow(() -> new FornecedoresNotFoundException());
         fornecedoresRepository.deleteById(id);
     }
-
-    /* ordena os fornecedores pela ordem de cadastro, seja crescente (asc) ou decrescente (desc) - funcionalidade bônus */
-    public List<FornecedoresModel> getAllFornecedoresOrderByCreatedAt(String order) {
-        if (order.equals("asc")) {
-            return fornecedoresRepository.findAllByOrderByCreatedAtAsc();
-        } else if (order.equals("desc")) {
-            return fornecedoresRepository.findAllByOrderByCreatedAtDesc();
-        } else {
-            throw new FornecedoresDetailsException("Parâmetro inválido");
-        }
-    }
-
-/* ordena os fornecedores pela categoria - funcionalidade bônus */
-    public List<FornecedoresModel> getAllFornecedoresByCategoria(String caategoria) {
-        return fornecedoresRepository.findAllByOrderByCategoria();
-    }
 }
