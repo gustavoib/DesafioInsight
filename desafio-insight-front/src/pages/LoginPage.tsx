@@ -1,24 +1,24 @@
-import { useState, useContext } from 'react';
-import { ILogin } from '../interfaces/Login';
+import { useContext } from 'react';
 import { AuthContext } from '../context/auth';
-import { toast } from 'react-toastify';
-import { Button, Form, Input, Card } from 'antd';
+import { Button, Form, Input, Card, message } from 'antd';
 
 const LoginPage = () => {
-    const [access, setAccess] = useState<ILogin>({} as ILogin);
-    const [/*incorrectPassword*/, setIncorrectPassword] = useState(false);
     const { login } = useContext(AuthContext);
+
+    const [form] = Form.useForm();
 
 
     const handleSubmit = async (e: any) => {
-      e.preventDefault();
-      const success = await login(access.username, access.password);
+        e.preventDefault();
+      
+        const values = await form.validateFields();
+        const success = await login(values.username, values.password);
 
-      if (success) {
-        toast.success('Login realizado com sucesso!');
-      } else {
-        setIncorrectPassword(true);
-      }
+        if (success) {
+            message.success('Login realizado com sucesso!');
+        } else {
+            message.error('Credenciais inválidas!');
+        }
     }
 
     type FieldType = {
@@ -30,15 +30,17 @@ const LoginPage = () => {
         <>
             <div style={{
                 display: 'flex',
-                justifyContent: 'center',
+                flexDirection: 'column',
+                justifyContent: "center",
                 alignItems: 'center',
                 height: '100vh',
                 background: '#f0f2f5'
             }}> 
                 <Card title="Realize Login com suas credencias" hoverable style={{ width: 400, textAlign: 'center' }}>
                     <Form
-                        name="basic"
-                        labelCol={{ span: 8 }}
+                        form={form}
+                        name="form_login"
+                        labelCol={{ span: 6 }}
                         wrapperCol={{ span: 16 }}
                         style={{ maxWidth: 700 }}
                         autoComplete="off"
@@ -48,14 +50,14 @@ const LoginPage = () => {
                             label="Credencial"
                             name="username"
                             rules={[{ required: true, message: 'Please input your username!' }]}>
-                            <Input value={login.username} onChange={(e) => setAccess({...access, username: e.target.value})}/>
+                            <Input />
                         </Form.Item>
 
                         <Form.Item<FieldType>
                             label="Senha"
                             name="password"
                             rules={[{ required: true, message: 'Please input your password!' },]}>
-                            <Input.Password value={login.password} onChange={(e) => setAccess({...access, password: e.target.value})}/>
+                            <Input.Password />
                         </Form.Item>
 
                         <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
@@ -64,7 +66,12 @@ const LoginPage = () => {
                             </Button>
                         </Form.Item>
                     </Form>
+                    <p style={{ marginTop: '30px', fontSize: '12px' }}>
+                        <strong>Usuário:</strong> admin@insightlab_desafio.com <br /><br />
+                        <strong>Senha:</strong> adMIN@cad_fornecedores!!
+                    </p>
                 </Card>
+                
             </div>
         </>
     );

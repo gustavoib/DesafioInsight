@@ -1,7 +1,7 @@
 import { createContext } from 'react';
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { api, loginUser, registerFornecedor, getAllFornecedores, getOneFornecedores, delFornecedor, updateFornecedores } from '../services/api.ts';
+import { api, loginUser, register, getAll, getOne, del, update } from '../services/api.ts';
 
 export const AuthContext = createContext({} as any);
 
@@ -57,9 +57,19 @@ export const AuthProvider = ({children}:any) => {
     };
 
     //função de cadastro de fornecedor
-    const registerFornecedor = async (name: string, cnpj: string, telefone: string, email: string, categoria: string, cep: string, rua: string, numero: string, bairro: string, cidade: string, estado: string) => {
+    const registerFornecedor = async (nome: string, cnpj: string, telefone: string, email: string, categoria: string, cep: string, rua: string, numero: string, bairro: string, cidade: string, estado: string) => {
+      const token = localStorage.getItem('token');
+      api.defaults.headers.Authorization = `Bearer ${token}`
+      console.log('estado', estado);
+      
       try {
-        await registerFornecedor(name, cnpj, telefone, email, categoria, cep, rua, numero, bairro, cidade, estado);
+        await register(nome, cnpj, telefone, email, categoria, cep, rua, numero, bairro, cidade, estado);
+        
+        console.log('nome', nome);
+        console.log('cnpj', cnpj);
+        console.log('telefone', telefone);
+        console.log('email', email);
+
         return true;
       } catch (error) {
         return false;
@@ -67,29 +77,42 @@ export const AuthProvider = ({children}:any) => {
     };
 
     //função de listagem de fornecedores
-    const getAllFornecedores = async (): Promise<any[]> => {
-        try {
-            const response = await getAllFornecedores();
-            return response.map((fornecedor: any) => fornecedor);
-        } catch (error) {
-            return [];
-        }
+    const getAllFornecedores = async () => {
+      try {
+        const response = await getAll();
+        return response.data.map((fornecedor: any) => fornecedor);
+      } catch (error) {
+        return [];
+      }
     };
 
     //função de listagem de um fornecedor
-    const getOneFornecedores = async (id: string): Promise<any> => {
+    const getOneFornecedores = async (id: string) => {
+      console.log('id', id);
         try {
-            const response = await getOneFornecedores(id);
-            return response.data;
+          const response = await getOne(id);
+          return response.data;
         } catch (error) {
-            return [];
+          return [];
         }
+    };
+
+    //função de atualização de fornecedor
+    const updateFornecedor = async (id: string, nome: string,  cnpj: string, telefone: string, email: string, categoria: string, cep: string, rua: string, numero: string, bairro: string, cidade: string, estado: string) => {
+      try {
+        await update(id, nome, cnpj, telefone, email, categoria, cep, rua, numero, bairro, cidade, estado);
+        return true;
+      } catch (error) {
+        return false;
+      }
     };
 
     //função de exclusão de fornecedor
     const delFornecedor = async (id: string) => {
+
+      console.log(id)
       try {
-        await delFornecedor(id);
+        await del(id);
         return true;
       } catch (error) {
         return false;
@@ -98,7 +121,7 @@ export const AuthProvider = ({children}:any) => {
 
 
     return (
-        <AuthContext.Provider value={{authenticated: !!user, login, loading, logout, registerFornecedor, getAllFornecedores, getOneFornecedores, delFornecedor, updateFornecedores}}>
+        <AuthContext.Provider value={{authenticated: !!user, login, loading, logout, registerFornecedor, getAllFornecedores, getOneFornecedores, delFornecedor, updateFornecedor}}>
             {children}
         </AuthContext.Provider>
     )

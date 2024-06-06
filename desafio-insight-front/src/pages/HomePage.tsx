@@ -1,27 +1,40 @@
-import { Button, Layout, Table, theme } from 'antd';
-import Profile from '../components/Profile';
-import { LeftOutlined, EyeOutlined, EditOutlined, DeleteOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { api, getAllFornecedores } from '../services/api';
+import { api, getAll } from '../services/api';
 import { useContext } from 'react';
 import { AuthContext } from '../context/auth';
 import { toast } from 'react-toastify';
+import { Button, Table, Layout } from 'antd';
+import { IoLogOutOutline } from 'react-icons/io5';
+import ModalCadastro from '../components/ModalCadastro';
+import DeleteWarning from '../components/DeleteWarning';
+import ModalEdit from '../components/ModalEdit';
+import ModalView from '../components/ModalView';
 
-const { Content, Footer, Sider } = Layout;
-
+const { Header, Content } = Layout;
 
 function HomePage() {
     const { logout } = useContext(AuthContext);
+
+    const user = JSON.parse(localStorage.getItem('user') || '{}');
 
     const handleLogout = () => {
         logout();
         toast.success('Logout realizado com sucesso!');
       };
 
-    const {
-        token: { colorBgContainer, borderRadiusLG },
-    } = theme.useToken();
+      const [data, setData] = useState([]);
+
+      useEffect(() => {
+          (async () => {
+              const token = localStorage.getItem('token');
+  
+              api.defaults.headers.Authorization = `Bearer ${token}`;
+  
+              const response = await getAll();
+              setData(response.data);
+          })();
+      }, []);
 
     const columns = [
         {
@@ -58,61 +71,52 @@ function HomePage() {
         {
             title: 'Ações',
             key: 'action',
-            render: () => (
-                <span style={{ display: 'flex', gap: '20px' }}>
-                    <a><EyeOutlined /></a>
-                    <a><EditOutlined /></a>
-                    <a><DeleteOutlined /></a>
+            render: (record: any) => (
+                <span style={{ display: 'flex', gap: '40px' }}>
+                    <ModalView id={record.id}/>
+                    <ModalEdit id={record.id}/>
+                    <DeleteWarning id={record.id}/>
                 </span>
             ),
         },
     ];
 
-    const [data, setData] = useState([]);
-
-    useEffect(() => {
-        (async () => {
-            const token = localStorage.getItem('token');
-
-            api.defaults.headers.Authorization = `Bearer ${token}`;
-
-            const response = await getAllFornecedores();
-            setData(response.data);
-            console.log(response.data);
-        })();
-    }, []);
-
     return (
         <Layout style={{minHeight:'100vh'}}>
-        <Sider
-        breakpoint="lg"
-        collapsedWidth="0">
-            <div className="demo-logo-vertical" />
-            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'center', margin: '100px' }}>
-                <Profile />
-                <span style={{color:'white', padding:'20px', textAlign:'center'}}> ADMINISTRADOR </span>
-                <Button type="primary" danger onClick={handleLogout}><LeftOutlined />Logout</Button>
-            </div>
-        </Sider>
-        <Layout 
-        style={{minHeight:'100vh'}}>
-            <Content style={{ margin: '24px 16px 0' }}>
-            <div
+            <Header
                 style={{
-                padding: 24,
-                minHeight: 400,
-                background: colorBgContainer,
-                borderRadius: borderRadiusLG,
-                }}
-            >
-                <h1>Fornecedores cadastrados</h1>
-                <Table columns={columns} dataSource={data} />
-            </div>
+                position: 'sticky',
+                top: 0,
+                zIndex: 1,
+                width: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                }}>
+                <div>
+                    <span style={{ fontSize: 12, color: 'white' }}>
+                        credencial: {user.username}
+                    </span>
+                </div>
+                <Button
+                    type="primary"
+                    onClick={handleLogout}
+                    danger
+                    style={{ marginLeft: 'auto' }}>
+                    <IoLogOutOutline /> Sair
+                </Button>
+            </Header>
+            <Content style={{ padding: '0 48px' }}>
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    margin: '20px 0 10px 0' 
+                    }}>
+                    <h1>Cadastro de Fornecedores</h1>
+                    <ModalCadastro/>
+                </div>
+                <Table columns={columns} dataSource={data} rowKey="id" pagination={{pageSize:8}}/>
             </Content>
-            <Footer style={{ textAlign: 'center' }}>
-            redes sociais
-            </Footer>
-        </Layout>
         </Layout>
     );
 };
