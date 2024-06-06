@@ -14,7 +14,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("fornecedores")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "http://localhost:5173")
 public class FornecedoresController {
 
     @Autowired
@@ -28,16 +28,6 @@ public class FornecedoresController {
     @GetMapping("/list/{id}")
     public ResponseEntity<FornecedoresModel> getOneFornecedores(@PathVariable("id") UUID id) {
         return ResponseEntity.status(HttpStatus.OK).body(fornecedoresServices.getOneFornecedores(id));
-    }
-
-    @GetMapping("/list/order/{order}")
-    public ResponseEntity<List<FornecedoresModel>> getAllFornecedoresOrderByCreatedAt(@PathVariable("order") String order) {
-        return ResponseEntity.status(HttpStatus.OK).body(fornecedoresServices.getAllFornecedoresOrderByCreatedAt(order));
-    }
-
-    @GetMapping("/list/category/{category}")
-    public ResponseEntity<List<FornecedoresModel>> getAllFornecedoresOrderByCategoria(@PathVariable("category") String categoria) {
-        return ResponseEntity.status(HttpStatus.OK).body(fornecedoresServices.getAllFornecedoresByCategoria(categoria));
     }
 
     @PostMapping("/save")
