@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const api = axios.create({
-    baseURL: "http://localhost:8080"
+    baseURL: "https://desafioinsight-production.up.railway.app"
 });
 
 export const loginUser = async (username: string, password: string) => {
