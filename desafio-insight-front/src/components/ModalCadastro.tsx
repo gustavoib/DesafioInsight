@@ -30,8 +30,8 @@ function ModalCadastro() {
             if (success) {
                 message.success('Fornecedor cadastrado com sucesso!');
                 form.resetFields();
-                window.location.reload();
                 setOpen(false);
+                window.location.reload();
             } else {
                 message.error('Erro ao cadastrar fornecedor!');
             }
@@ -115,7 +115,7 @@ function ModalCadastro() {
             </Button>
           ]}
       >
-        <Form form={form} {...formItemLayout} style={{ maxWidth: 1000 }} autoComplete='off'>
+        <Form form={form} {...formItemLayout} style={{ maxWidth: 1000 }} name='form_register'>
             <Form.Item label="Nome" name="nome" rules={[{ required: true, message: 'Por favor, escreva um Nome.' }]}>
                 <Input />
             </Form.Item>

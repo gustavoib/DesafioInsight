@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useEffect } from 'react';
-import { api, getAll } from '../services/api';
 import { useContext } from 'react';
+import { api } from '../services/api';
 import { AuthContext } from '../context/auth';
 import { toast } from 'react-toastify';
 import { Button, Table, Layout } from 'antd';
+import type { TableColumnsType } from 'antd';
 import { IoLogOutOutline } from 'react-icons/io5';
 import ModalCadastro from '../components/ModalCadastro';
 import DeleteWarning from '../components/DeleteWarning';
@@ -14,7 +15,7 @@ import ModalView from '../components/ModalView';
 const { Header, Content } = Layout;
 
 function HomePage() {
-    const { logout } = useContext(AuthContext);
+    const { logout, getAllFornecedores } = useContext(AuthContext);
 
     const user = JSON.parse(localStorage.getItem('user') || '{}');
 
@@ -31,12 +32,15 @@ function HomePage() {
   
               api.defaults.headers.Authorization = `Bearer ${token}`;
   
-              const response = await getAll();
-              setData(response.data);
+              const response = await getAllFornecedores();
+              
+            
+                const sortedData = response.sort((a: any, b: any) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
+                setData(sortedData);
           })();
       }, []);
 
-    const columns = [
+    const columns: TableColumnsType = [
         {
             title: 'Nome',
             dataIndex: 'nome',
@@ -62,11 +66,12 @@ function HomePage() {
                 });
                 return formattedDate;
             },
+            sorter: (a: any, b: any) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
         },
         {
             title: 'Estado',
             dataIndex: 'estado',
-            key: 'estado',
+            key: 'estado'
         },
         {
             title: 'Ações',

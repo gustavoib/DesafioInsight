@@ -65,11 +65,6 @@ export const AuthProvider = ({children}:any) => {
       try {
         await register(nome, cnpj, telefone, email, categoria, cep, rua, numero, bairro, cidade, estado);
         
-        console.log('nome', nome);
-        console.log('cnpj', cnpj);
-        console.log('telefone', telefone);
-        console.log('email', email);
-
         return true;
       } catch (error) {
         return false;
@@ -88,7 +83,6 @@ export const AuthProvider = ({children}:any) => {
 
     //função de listagem de um fornecedor
     const getOneFornecedores = async (id: string) => {
-      console.log('id', id);
         try {
           const response = await getOne(id);
           return response.data;

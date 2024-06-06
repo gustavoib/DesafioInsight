@@ -61,7 +61,6 @@ function ModalEdit({ id }: ModalEditProps) {
                 message.success('Fornecedor editado com sucesso!');
                 setOpen(false);
                 window.location.reload();
-                window
             } else {
                 message.error('Erro ao editar fornecedor!');
             }
@@ -89,6 +88,7 @@ function ModalEdit({ id }: ModalEditProps) {
         { value: 'informatica', label: 'Informática' },
         { value: 'moveis', label: 'Móveis' },
         { value: 'madeira', label: 'Madeira' },
+        { value: 'pecas', label: 'Peças Automotivas' },
         { value: 'outros', label: 'Outros' }
     ];
 
@@ -142,11 +142,7 @@ function ModalEdit({ id }: ModalEditProps) {
                     </Button>
                 ]}
             >
-                <Form
-                    {...formItemLayout}
-                    form={form}
-                    name="fotm_register"
-                >
+                <Form {...formItemLayout} form={form} name='form_edit'>
                     <Form.Item
                         name="id"
                         label="ID"

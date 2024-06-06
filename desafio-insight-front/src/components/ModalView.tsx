@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../context/auth';
 import { Button, Modal } from 'antd';
-import { EyeOutlined } from '@ant-design/icons';
+import { EyeOutlined, ProfileOutlined } from '@ant-design/icons';
 
 interface ModalViewProps {
     id: string;
@@ -55,12 +55,17 @@ function ModalView({ id }: ModalViewProps) {
                     </Button>
                 ]}
             >
-                <p><strong>Nome: </strong>{fornecedor?.nome}</p>
-                <p><strong>CNPJ: </strong>{fornecedor?.cnpj}</p>
-                <p><strong>Telefone: </strong>{fornecedor?.telefone}</p>
-                <p><strong>Email: </strong>{fornecedor?.email}</p>
-                <p><strong>Categoria: </strong>{fornecedor?.categoria}</p>    
-                <p><strong>Endereço: </strong> {fornecedor?.rua}, {fornecedor?.numero}, {fornecedor?.bairro}, {fornecedor?.cep}, {fornecedor?.cidade} - {fornecedor?.estado}</p>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                    <div>
+                        <p><strong>Nome: </strong>{fornecedor?.nome}</p>
+                        <p><strong>CNPJ: </strong>{fornecedor?.cnpj}</p>
+                        <p><strong>Telefone: </strong>{fornecedor?.telefone}</p>
+                        <p><strong>Email: </strong>{fornecedor?.email}</p>
+                        <p><strong>Categoria: </strong>{fornecedor?.categoria}</p>    
+                        <p><strong>Endereço: </strong>{fornecedor?.rua}, {fornecedor?.numero}, {fornecedor?.bairro}, {fornecedor?.cep}, {fornecedor?.cidade} - {fornecedor?.estado}</p>
+                    </div>
+                    <ProfileOutlined style={{ fontSize: '150px', color: 'grey', marginRight: '30px', marginBottom: '80px' }} />
+                </div>
             </Modal>
         </>
     );
