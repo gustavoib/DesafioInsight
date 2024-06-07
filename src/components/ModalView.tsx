@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { AuthContext } from '../context/auth';
 import { Button, Modal } from 'antd';
-import { EyeOutlined, ProfileOutlined } from '@ant-design/icons';
+import { EyeOutlined } from '@ant-design/icons';
 
 interface ModalViewProps {
     id: string;
@@ -64,7 +64,6 @@ function ModalView({ id }: ModalViewProps) {
                         <p><strong>Categoria: </strong>{fornecedor?.categoria}</p>    
                         <p><strong>Endereço: </strong>{fornecedor?.rua}, {fornecedor?.numero}, {fornecedor?.bairro}, {fornecedor?.cep}, {fornecedor?.cidade} - {fornecedor?.estado}</p>
                     </div>
-                    <ProfileOutlined style={{ fontSize: '150px', color: 'grey', marginRight: '30px', marginBottom: '80px' }} />
                 </div>
             </Modal>
         </>

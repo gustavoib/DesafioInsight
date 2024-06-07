@@ -136,7 +136,7 @@ function ModalEdit({ id, updatePage }: ModalEditProps) {
     return (
         <>
             <a>
-                <EditOutlined onClick={() => setOpen(true)} />
+                <EditOutlined onClick={() => setOpen(true)}/>
             </a>
             <Modal
                 title="Editar fornecedor"
@@ -159,7 +159,7 @@ function ModalEdit({ id, updatePage }: ModalEditProps) {
                         label="ID"
                         hidden
                     >
-                        <Input />
+                        <Input/>
                     </Form.Item>
 
                     <Form.Item
@@ -167,7 +167,7 @@ function ModalEdit({ id, updatePage }: ModalEditProps) {
                         label="Nome"
                         rules={[{ required: true, message: 'Por favor, insira o nome do fornecedor!' }]}
                     >
-                        <Input />
+                        <Input/>
                     </Form.Item>
 
                     <Form.Item
@@ -191,7 +191,7 @@ function ModalEdit({ id, updatePage }: ModalEditProps) {
                         label="Email"
                         rules={[{ required: true, message: 'Por favor, insira o email do fornecedor!' }]}
                     >
-                        <Input />
+                        <Input/>
                     </Form.Item>
 
                     <Form.Item
@@ -199,7 +199,7 @@ function ModalEdit({ id, updatePage }: ModalEditProps) {
                         label="Categoria"
                         rules={[{ required: true, message: 'Por favor, insira a categoria do fornecedor!' }]}
                     >
-                        <Select options={categorias} />
+                        <Select options={categorias}/>
                     </Form.Item>
 
                     <Form.Item
@@ -207,7 +207,7 @@ function ModalEdit({ id, updatePage }: ModalEditProps) {
                         label="CEP"
                         rules={[{ required: true, message: 'Por favor, insira o CEP do fornecedor!' }]}
                     >
-                        <InputMask mask={'00000-000'} />
+                        <InputMask mask={'00000-000'}/>
                     </Form.Item>
 
                     <Form.Item
@@ -215,7 +215,7 @@ function ModalEdit({ id, updatePage }: ModalEditProps) {
                         label="Rua"
                         rules={[{ required: true, message: 'Por favor, insira a rua do fornecedor!' }]}
                     >
-                        <Input />
+                        <Input/>
                     </Form.Item>
 
                     <Form.Item
@@ -223,7 +223,7 @@ function ModalEdit({ id, updatePage }: ModalEditProps) {
                         label="Número"
                         rules={[{ required: true, message: 'Por favor, insira o número do fornecedor!' }]}
                     >
-                        <Input />
+                        <Input/>
                     </Form.Item>
 
                     <Form.Item
@@ -231,7 +231,7 @@ function ModalEdit({ id, updatePage }: ModalEditProps) {
                         label="Bairro"
                         rules={[{ required: true, message: 'Por favor, insira o bairro do fornecedor!' }]}
                     >
-                        <Input />
+                        <Input/>
                     </Form.Item>
 
                     <Form.Item
@@ -239,7 +239,7 @@ function ModalEdit({ id, updatePage }: ModalEditProps) {
                         label="Cidade"
                         rules={[{ required: true, message: 'Por favor, insira a cidade do fornecedor!' }]}
                     >
-                        <Input />
+                        <Input/>
                     </Form.Item>
 
                     <Form.Item
@@ -247,7 +247,7 @@ function ModalEdit({ id, updatePage }: ModalEditProps) {
                         label="Estado"
                         rules={[{ required: true, message: 'Por favor, insira o estado do fornecedor!' }]}
                     >
-                        <Select options={estados} />
+                        <Select options={estados}/>
                     </Form.Item>
 
                 </Form>

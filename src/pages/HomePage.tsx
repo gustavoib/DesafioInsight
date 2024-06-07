@@ -77,13 +77,13 @@ function HomePage() {
             title: 'Nome',
             dataIndex: 'nome',
             key: 'name',
-            
+            responsive: ["sm"]
         },
         {
             title: 'Categoria',
             dataIndex: 'categoria',
             key: 'categoria',
-            
+            responsive: ["sm"]
         },
         {
             title: 'Criado em',
@@ -101,13 +101,13 @@ function HomePage() {
                 return formattedDate;
             },
             sorter: (a: any, b: any) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime(),
-            
+            responsive: ["lg"]
         },
         {
             title: 'Estado',
             dataIndex: 'estado',
             key: 'estado',
-            
+            responsive: ["sm"]
         },
         {
             title: 'Ações',
@@ -119,7 +119,7 @@ function HomePage() {
                     <DeleteWarning id={record.id} updatePage={updateDataAfterCRUD} />
                 </span>
             ),
-            
+            responsive: ["sm"]
         },
     ];
 
@@ -133,26 +133,28 @@ function HomePage() {
                 width: '100%',
                 display: 'flex',
                 alignItems: 'center',
+                padding: "0 20px",
                 }}>
                 <div>
-                    <span style={{ fontSize: 12, color: 'white' }}>
-                        credencial: {user.username}
+                    <span style={{ fontSize: 16, color: 'white' }}>
+                        {user.username}
                     </span>
                 </div>
                 <Button
                     type="primary"
                     onClick={handleLogout}
                     danger
-                    style={{ marginLeft: 'auto' }}>
+                    style={{ marginLeft: 'auto', background:'grey' }}>
                     <IoLogOutOutline /> Sair
                 </Button>
             </Header>
-            <Content style={{ padding: '0 48px' }}>
+            <Content style={{ padding: '0 20px' }}>
                 <div style={{
                     display: 'flex',
                     justifyContent: 'space-between',
                     alignItems: 'center',
-                    margin: '20px 0 10px 0' 
+                    margin: '20px 0 10px 0', 
+                    flexWrap: 'wrap'
                     }}>
                     <h1>Cadastro de Fornecedores</h1>
                     <ModalCadastro updatePage={updateDataAfterCRUD}/>

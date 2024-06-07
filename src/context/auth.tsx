@@ -36,9 +36,9 @@ export const AuthProvider = ({children}:any) => {
         setUser(loggedUser);
         navigate('/home');
 
-        return true; // Login bem-sucedido
+        return true; 
       } catch (error) {
-        return false; // Login falhou
+        return false; 
       }
     };
 

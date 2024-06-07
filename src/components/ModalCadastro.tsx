@@ -127,7 +127,7 @@ function ModalCadastro( {updatePage} : ModalCadastroProps ) {
       >
         <Form form={form} {...formItemLayout} style={{ maxWidth: 1000 }} name='form_register'>
             <Form.Item label="Nome" name="nome" rules={[{ required: true, message: 'Por favor, escreva um Nome.' }]}>
-                <Input />
+                <Input/>
             </Form.Item>
 
             <Form.Item label="CNPJ" name="cnpj" rules={[{ required: true, message: 'Por favor, escreva um CNPJ.' }]}>
@@ -139,7 +139,7 @@ function ModalCadastro( {updatePage} : ModalCadastroProps ) {
             </Form.Item>
 
             <Form.Item label="E-mail" name="email" rules={[{ required: true, message: 'Por favor, escreva um E-mail.' }]}>
-                <Input />
+                <Input/>
             </Form.Item>
 
             <Form.Item name="categoria" label="Categoria" rules={[{ required: true, message: 'Por favor, escreva uma Categoria.' }]}>
@@ -156,15 +156,15 @@ function ModalCadastro( {updatePage} : ModalCadastroProps ) {
             </Form.Item>
 
             <Form.Item label="Número" name="numero" rules={[{ required: true, message: 'Por favor, escreva um Número.' }]}>
-                <Input />
+                <Input/>
             </Form.Item>
 
             <Form.Item label="Bairro" name="bairro" rules={[{ required: true, message: 'Por favor, escreva um Bairro.' }]}>
-                <Input />
+                <Input/>
             </Form.Item>
 
             <Form.Item label="Cidade" name="cidade" rules={[{ required: true, message: 'Por favor, escreva um Cidade.' }]}>
-                <Input />
+                <Input/>
             </Form.Item>
 
             <Form.Item label="Estado" name="estado" rules={[{ required: true, message: 'Por favor, escreva um Estado.' }]}>
