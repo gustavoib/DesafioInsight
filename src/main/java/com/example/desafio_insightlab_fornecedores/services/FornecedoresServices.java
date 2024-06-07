@@ -9,6 +9,10 @@ import com.example.desafio_insightlab_fornecedores.utils.Utils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.UUID;
 
@@ -23,6 +27,16 @@ public class FornecedoresServices {
         if (fornecedores.isEmpty()) {
             throw new FornecedoresNotFoundException("Nenhum fornecedor cadastrado");
         }
+
+        ZoneId databaseTimeZone = ZoneId.of("UTC");
+        ZoneId brazilTimeZone = ZoneId.of("America/Sao_Paulo");
+        fornecedores.forEach(fornecedor -> {
+            LocalDateTime createdAt = fornecedor.getCreatedAt();
+            ZonedDateTime createdAtInUTC = createdAt.atZone(databaseTimeZone);
+            ZonedDateTime createdAtInBrazil = createdAtInUTC.withZoneSameInstant(brazilTimeZone);
+            fornecedor.setCreatedAt(createdAtInBrazil.toLocalDateTime());
+        });
+
         return fornecedores;
     }
 
