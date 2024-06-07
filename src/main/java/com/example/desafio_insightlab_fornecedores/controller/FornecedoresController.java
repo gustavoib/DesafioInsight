@@ -14,7 +14,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("fornecedores")
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "https://dev-frontend--desafio-fullsatck-insight.netlify.app/home")
 public class FornecedoresController {
 
     @Autowired

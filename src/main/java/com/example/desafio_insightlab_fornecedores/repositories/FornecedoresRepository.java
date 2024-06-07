@@ -9,7 +9,4 @@ import java.util.UUID;
 
 @Repository
 public interface FornecedoresRepository extends JpaRepository<FornecedoresModel, UUID> {
-    List<FornecedoresModel> findAllByOrderByCreatedAtDesc();
-    List<FornecedoresModel> findAllByOrderByCategoria();
-    List<FornecedoresModel> findAllByOrderByCreatedAtAsc();
 }
