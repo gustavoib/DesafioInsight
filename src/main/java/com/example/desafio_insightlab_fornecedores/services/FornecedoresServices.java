@@ -43,7 +43,7 @@ public class FornecedoresServices {
     /* listar um fornecedor específico - requisito do desafio */
     public FornecedoresModel getOneFornecedores(UUID id) {
         return fornecedoresRepository.findById(id)
-                .orElseThrow(() -> new FornecedoresNotFoundException());
+                .orElseThrow(FornecedoresNotFoundException::new);
     }
 
     /* cadastrar um fornecedor - requisito do desafio */
@@ -60,7 +60,7 @@ public class FornecedoresServices {
     /* editar um fornecedor - requisito do desafio */
     public FornecedoresModel updateFornecedores(UUID id, FornecedoresDto fornecedorRecordDto) {
         FornecedoresModel fornecedor = fornecedoresRepository.findById(id)
-                .orElseThrow(() -> new FornecedoresNotFoundException());
+                .orElseThrow(FornecedoresNotFoundException::new);
 
         if (!fornecedorRecordDto.cnpj().equals(fornecedor.getCnpj())) {
             throw new FornecedoresDetailsException("Não é possível alterar o CNPJ");
@@ -75,7 +75,7 @@ public class FornecedoresServices {
     /* deleta um fornecedor - requisito do desafio */
     public void deleteFornecedores(UUID id) {
         fornecedoresRepository.findById(id)
-                .orElseThrow(() -> new FornecedoresNotFoundException());
+                .orElseThrow(FornecedoresNotFoundException::new);
         fornecedoresRepository.deleteById(id);
     }
 }
