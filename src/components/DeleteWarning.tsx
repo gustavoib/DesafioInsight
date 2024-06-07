@@ -1,19 +1,29 @@
-import { Popconfirm } from 'antd';
+import { Popconfirm, message } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
 import { useContext } from 'react';
 import { AuthContext } from '../context/auth';
 
 
 interface DeleteWarningProps {
+    updatePage: () => void;
     id: string;
 }
 
-function DeleteWarning({id}: DeleteWarningProps) {
+function DeleteWarning({id, updatePage}: DeleteWarningProps) {
     const { delFornecedor } = useContext(AuthContext);
 
-    const handleDelete = () => {
-        console.log('id', id)
-        delFornecedor(id);    
+    const handleDelete = async () => {
+        try {
+            const success = await delFornecedor(id);
+            if (success) {
+                message.success('Fornecedor deletado com sucesso!');
+                updatePage();
+            } else {
+                message.error('Erro ao deletar fornecedor!');
+            }
+        } catch (error) {
+            console.error('Erro ao deletar fornecedor:', error);
+        }  
     }
 
     return(

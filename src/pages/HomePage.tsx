@@ -3,53 +3,87 @@ import { useEffect } from 'react';
 import { useContext } from 'react';
 import { api } from '../services/api';
 import { AuthContext } from '../context/auth';
-import { toast } from 'react-toastify';
-import { Button, Table, Layout } from 'antd';
+import { Button, Table, Layout, message } from 'antd';
 import type { TableColumnsType } from 'antd';
 import { IoLogOutOutline } from 'react-icons/io5';
 import ModalCadastro from '../components/ModalCadastro';
 import DeleteWarning from '../components/DeleteWarning';
 import ModalEdit from '../components/ModalEdit';
 import ModalView from '../components/ModalView';
+import React from 'react';
 
 const { Header, Content } = Layout;
 
 function HomePage() {
     const { logout, getAllFornecedores } = useContext(AuthContext);
-
     const user = JSON.parse(localStorage.getItem('user') || '{}');
+    const [data, setData] = useState<any[]>([]);
 
     const handleLogout = () => {
         logout();
-        toast.success('Logout realizado com sucesso!');
+        message.success('Logout realizado com sucesso!');
       };
 
-      const [data, setData] = useState([]);
-
       useEffect(() => {
-          (async () => {
-              const token = localStorage.getItem('token');
-  
-              api.defaults.headers.Authorization = `Bearer ${token}`;
-  
-              const response = await getAllFornecedores();
-              
-            
+        const fetchData = async () => {
+            try {
+                const token = localStorage.getItem('token');
+                api.defaults.headers.Authorization = `Bearer ${token}`;
+                const response = await getAllFornecedores();
                 const sortedData = response.sort((a: any, b: any) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
                 setData(sortedData);
-          })();
-      }, []);
+            } catch (error) {
+                console.error('Erro ao carregar fornecedores:', error);
+            }
+        };
+        fetchData();
+    }, []);
+
+    const updateDataAfterCRUD = async () => {
+        try {
+            const response = await getAllFornecedores();
+            const sortedData = response.sort((a: any, b: any) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime());
+            setData(sortedData);
+        } catch (error) {
+            console.error(error);
+        }
+    };
 
     const columns: TableColumnsType = [
+        {
+            title: 'Detalhes',
+            render: (record) => (
+                <React.Fragment>
+                    <div>
+                        <strong>Nome do Fornecedor:</strong>
+                        <br />
+                        {record.nome}
+                    </div>
+                    <br />
+                    <div>
+                        <strong>Ações:</strong>
+                        <br />
+                        <span style={{ display: 'flex', gap: '10px' }}>
+                            <ModalView id={record.id} />
+                            <ModalEdit id={record.id} updatePage={updateDataAfterCRUD} />
+                            <DeleteWarning id={record.id} updatePage={updateDataAfterCRUD} />
+                        </span>
+                    </div>
+                </React.Fragment>
+            ),
+            responsive: ["xs"]
+        },
         {
             title: 'Nome',
             dataIndex: 'nome',
             key: 'name',
+            
         },
         {
             title: 'Categoria',
             dataIndex: 'categoria',
             key: 'categoria',
+            
         },
         {
             title: 'Criado em',
@@ -66,23 +100,26 @@ function HomePage() {
                 });
                 return formattedDate;
             },
-            sorter: (a: any, b: any) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime()
+            sorter: (a: any, b: any) => new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime(),
+            
         },
         {
             title: 'Estado',
             dataIndex: 'estado',
-            key: 'estado'
+            key: 'estado',
+            
         },
         {
             title: 'Ações',
             key: 'action',
             render: (record: any) => (
                 <span style={{ display: 'flex', gap: '40px' }}>
-                    <ModalView id={record.id}/>
-                    <ModalEdit id={record.id}/>
-                    <DeleteWarning id={record.id}/>
+                    <ModalView id={record.id} />
+                    <ModalEdit id={record.id} updatePage={updateDataAfterCRUD} />
+                    <DeleteWarning id={record.id} updatePage={updateDataAfterCRUD} />
                 </span>
             ),
+            
         },
     ];
 
@@ -118,7 +155,7 @@ function HomePage() {
                     margin: '20px 0 10px 0' 
                     }}>
                     <h1>Cadastro de Fornecedores</h1>
-                    <ModalCadastro/>
+                    <ModalCadastro updatePage={updateDataAfterCRUD}/>
                 </div>
                 <Table columns={columns} dataSource={data} rowKey="id" pagination={{pageSize:8}}/>
             </Content>

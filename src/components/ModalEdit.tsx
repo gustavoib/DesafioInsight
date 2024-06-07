@@ -5,10 +5,11 @@ import { EditOutlined } from '@ant-design/icons';
 import InputMask from 'antd-mask-input';
 
 interface ModalEditProps {
+    updatePage: () => void;
     id: string;
 }
 
-function ModalEdit({ id }: ModalEditProps) {
+function ModalEdit({ id, updatePage }: ModalEditProps) {
     const [form] = Form.useForm();
     const [open, setOpen] = useState(false);
 
@@ -62,7 +63,7 @@ function ModalEdit({ id }: ModalEditProps) {
             if (success) {
                 message.success('Fornecedor editado com sucesso!');
                 setOpen(false);
-                window.location.reload();
+                updatePage();
             } else {
                 message.error('Erro ao editar fornecedor!');
             }

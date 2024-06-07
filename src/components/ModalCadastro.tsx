@@ -4,14 +4,17 @@ import { Select, Form, Button, Modal, Input, message } from 'antd';
 import { IoAdd } from 'react-icons/io5';
 import InputMask from 'antd-mask-input';
 
-function ModalCadastro() {
+interface ModalCadastroProps {
+    updatePage: () => void;
+}
+
+function ModalCadastro( {updatePage} : ModalCadastroProps ) {
     const [open, setOpen] = useState(false);
     const { registerFornecedor } = useContext(AuthContext);
     const [form] = Form.useForm();
 
-    const handleSubmit = async (e: any) => {
+    const handleSubmit = async () => {
         try {
-            e.preventDefault();
             const values = await form.validateFields();
             const success = await registerFornecedor(
                 values.nome,
@@ -31,7 +34,7 @@ function ModalCadastro() {
                 message.success('Fornecedor cadastrado com sucesso!');
                 form.resetFields();
                 setOpen(false);
-                window.location.reload();
+                updatePage();
             } else {
                 message.error('Erro ao cadastrar fornecedor!');
             }
@@ -43,11 +46,11 @@ function ModalCadastro() {
     const formItemLayout = {
         labelCol: {
             xs: { span: 24 },
-            sm: { span: 6 },
+            sm: { span: 6 }
         },
         wrapperCol: {
             xs: { span: 24 },
-            sm: { span: 14 },
+            sm: { span: 14 }
         },
     };
     
@@ -117,9 +120,7 @@ function ModalCadastro() {
             <Button key="back" onClick={() => {setOpen(false); form.resetFields()}}>
               Cancelar
             </Button>,
-            <Button key="submit" type="primary" onClick={(e) => {
-                handleSubmit(e);
-            }}>
+            <Button key="submit" type="primary" onClick={handleSubmit}>
               Cadastrar
             </Button>
           ]}
