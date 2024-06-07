@@ -7,10 +7,7 @@ const LoginPage = () => {
 
     const [form] = Form.useForm();
 
-
-    const handleSubmit = async (e: any) => {
-        e.preventDefault();
-      
+    const handleSubmit = async () => {
         const values = await form.validateFields();
         const success = await login(values.username, values.password);
 
@@ -33,45 +30,56 @@ const LoginPage = () => {
                 flexDirection: 'column',
                 justifyContent: "center",
                 alignItems: 'center',
-                height: '100vh',
-                background: '#f0f2f5'
-            }}> 
-                <Card title="Realize Login com suas credencias" hoverable style={{ width: 400, textAlign: 'center' }}>
+                minHeight: '100vh',
+                background: '#f0f2f5',
+                padding: '20px'
+            }}>
+                <Card
+                    title="Realize Login com suas credenciais"
+                    hoverable
+                    style={{
+                        width: '100%',
+                        maxWidth: '400px',
+                        textAlign: 'center',
+                        boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+                        borderRadius: '8px'
+                    }}
+                >
                     <Form
                         form={form}
                         name="form_login"
-                        labelCol={{ span: 6 }}
-                        wrapperCol={{ span: 16 }}
-                        style={{ maxWidth: 700 }}
+                        style={{ maxWidth: '100%' }}
                         autoComplete="off"
-                        onSubmitCapture={handleSubmit}>
-
+                        onSubmitCapture={handleSubmit}
+                        layout="vertical"
+                    >
                         <Form.Item<FieldType>
                             label="Credencial"
                             name="username"
-                            rules={[{ required: true, message: 'Please input your username!' }]}>
+                            rules={[{ required: true, message: 'Por favor, insira seu nome de usuário!' }]}
+                        >
                             <Input />
                         </Form.Item>
 
                         <Form.Item<FieldType>
                             label="Senha"
                             name="password"
-                            rules={[{ required: true, message: 'Please input your password!' },]}>
+                            rules={[{ required: true, message: 'Por favor, insira sua senha!' }]}
+                        >
                             <Input.Password />
                         </Form.Item>
 
-                        <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                            <Button type="primary" htmlType="submit">
-                                Enviar
+                        <Form.Item>
+                            <Button type="primary" htmlType="submit" block>
+                                Entrar
                             </Button>
                         </Form.Item>
                     </Form>
-                    <p style={{ marginTop: '30px', fontSize: '12px' }}>
+                    <p style={{ marginTop: '30px', fontSize: '12px', color: 'gray' }}>
                         <strong>Usuário:</strong> admin@insightlab_desafio.com <br /><br />
                         <strong>Senha:</strong> adMIN@cad_fornecedores!!
                     </p>
                 </Card>
-                
             </div>
         </>
     );
