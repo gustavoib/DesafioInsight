@@ -36,6 +36,8 @@ function ModalEdit({ id }: ModalEditProps) {
                 }
             }
             fetchData();
+        } else {
+            form.resetFields();
         }
     }, [ id, form, open]);
 
@@ -81,15 +83,23 @@ function ModalEdit({ id }: ModalEditProps) {
     };
 
     const categorias = [
-        { value: 'alimentos', label: 'Alimentos' },
-        { value: 'bebidas', label: 'Bebidas' },
-        { value: 'vestuario', label: 'Vestuário' },
-        { value: 'art_esportivos', label: 'Artigos esportivos' },
-        { value: 'informatica', label: 'Informática' },
-        { value: 'moveis', label: 'Móveis' },
-        { value: 'madeira', label: 'Madeira' },
-        { value: 'pecas', label: 'Peças Automotivas' },
-        { value: 'outros', label: 'Outros' }
+        { value: 'Alimentos', label: 'Alimentos' },
+        { value: 'Eletrônicos', label: 'Eletrônicos'},
+        { value: 'Informática', label: 'Informática' },
+        { value: 'Móveis', label: 'Móveis' },
+        { value: 'Automotivo', label: 'Automotivo' },
+        { value: 'Cosméticos', label: 'Cosméticos' },
+        { value: 'Farmacêutico', label: 'Farmacêutico' },
+        { value: 'Brinquedos', label: 'Brinquedos' },
+        { value: 'Calçados', label: 'Calçados' },
+        { value: 'Decoração', label: 'Decoração' },
+        { value: 'Esportes', label: 'Esportes' },
+        { value: 'Ferramentas', label: 'Ferramentas' },
+        { value: 'Jogos', label: 'Jogos' },
+        { value: 'Limpeza', label: 'Limpeza' },
+        { value: 'Papelaria', label: 'Papelaria' },
+        { value: 'Vestuário', label: 'Vestuário' },
+        { value: 'Outros', label: 'Outros' }
     ];
 
     const estados = [

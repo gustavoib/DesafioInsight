@@ -52,44 +52,53 @@ function ModalCadastro() {
     };
     
     const categorias = [
-        { value: 'alimentos', label: 'Alimentos' },
-        { value: 'bebidas', label: 'Bebidas' },
-        { value: 'vestuario', label: 'Vestuário' },
-        { value: 'art_esportivos', label: 'Artigos esportivos' },
-        { value: 'informatica', label: 'Informática' },
-        { value: 'moveis', label: 'Móveis' },
-        { value: 'madeira', label: 'Madeira' },
-        { value: 'outros', label: 'Outros' }
+        { value: 'Alimentos', label: 'Alimentos' },
+        { value: 'Eletrônicos', label: 'Eletrônicos'},
+        { value: 'Informática', label: 'Informática' },
+        { value: 'Móveis', label: 'Móveis' },
+        { value: 'Automotivo', label: 'Automotivo' },
+        { value: 'Cosméticos', label: 'Cosméticos' },
+        { value: 'Farmacêutico', label: 'Farmacêutico' },
+        { value: 'Brinquedos', label: 'Brinquedos' },
+        { value: 'Calçados', label: 'Calçados' },
+        { value: 'Decoração', label: 'Decoração' },
+        { value: 'Esportes', label: 'Esportes' },
+        { value: 'Ferramentas', label: 'Ferramentas' },
+        { value: 'Jogos', label: 'Jogos' },
+        { value: 'Limpeza', label: 'Limpeza' },
+        { value: 'Papelaria', label: 'Papelaria' },
+        { value: 'Vestuário', label: 'Vestuário' },
+        { value: 'Outros', label: 'Outros' }
     ];
 
-    const estados = [
-        { value: 'Acre', label: 'AC' },
-        { value: 'Alagoas', label: 'AL' },
-        { value: 'Amapá', label: 'AP' },
-        { value: 'Amazonas', label: 'AM' },
-        { value: 'Bahia', label: 'BA' },
-        { value: 'Ceará', label: 'CE' },
-        { value: 'Distrito Federal', label: 'DF' },
-        { value: 'Espírito Santo', label: 'ES' },
-        { value: 'Goiás', label: 'GO' },
-        { value: 'Maranhão', label: 'MA' },
-        { value: 'Mato Grosso', label: 'MT' },
-        { value: 'Mato Grosso do Sul', label: 'MS' },
-        { value: 'Minas Gerais', label: 'MG' },
-        { value: 'Pará', label: 'PA' },
-        { value: 'Paraíba', label: 'PB' },
-        { value: 'Paraná', label: 'PR' },
-        { value: 'Pernambuco', label: 'PE' },
-        { value: 'Piauí', label: 'PI' },
-        { value: 'Rio de Janeiro', label: 'RJ' },
-        { value: 'Rio Grande do Norte', label: 'RN' },
-        { value: 'Rio Grande do Sul', label: 'RS' },
-        { value: 'Rondônia', label: 'RO' },
-        { value: 'Roraima', label: 'RR' },
-        { value: 'Santa Catarina', label: 'SC' },
-        { value: 'São Paulo', label: 'SP' },
-        { value: 'Sergipe', label: 'SE' },
-        { value: 'Tocantins', label: 'TO' }
+    const estados = [       
+        { value: 'AC', label: 'Acre' },
+        { value: 'AL', label: 'Alagoas' },
+        { value: 'AP', label: 'Amapá' },
+        { value: 'AM', label: 'Amazonas' },
+        { value: 'BA', label: 'Bahia' },
+        { value: 'CE', label: 'Ceará' },
+        { value: 'DF', label: 'Distrito Federal' },
+        { value: 'ES', label: 'Espírito Santo' },
+        { value: 'GO', label: 'Goiás' },
+        { value: 'MA', label: 'Maranhão' },
+        { value: 'MT', label: 'Mato Grosso' },
+        { value: 'MS', label: 'Mato Grosso do Sul' },
+        { value: 'MG', label: 'Minas Gerais' },
+        { value: 'PA', label: 'Pará' },
+        { value: 'PB', label: 'Paraíba' },
+        { value: 'PR', label: 'Paraná' },
+        { value: 'PE', label: 'Pernambuco' },
+        { value: 'PI', label: 'Piauí' },
+        { value: 'RJ', label: 'Rio de Janeiro' },
+        { value: 'RN', label: 'Rio Grande do Norte' },
+        { value: 'RS', label: 'Rio Grande do Sul' },
+        { value: 'RO', label: 'Rondônia' },
+        { value: 'RR', label: 'Roraima' },
+        { value: 'SC', label: 'Santa Catarina' },
+        { value: 'SP', label: 'São Paulo' },
+        { value: 'SE', label: 'Sergipe' },
+        { value: 'TO', label: 'Tocantins' }    
     ];
     
 
@@ -132,7 +141,7 @@ function ModalCadastro() {
                 <Input />
             </Form.Item>
 
-            <Form.Item name="categoria" label="Select" rules={[{ required: true, message: 'Por favor, escreva uma Categoria.' }]}>
+            <Form.Item name="categoria" label="Categoria" rules={[{ required: true, message: 'Por favor, escreva uma Categoria.' }]}>
               <Select options={categorias} />
             </Form.Item>
 
