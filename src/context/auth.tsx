@@ -60,7 +60,6 @@ export const AuthProvider = ({children}:any) => {
     const registerFornecedor = async (nome: string, cnpj: string, telefone: string, email: string, categoria: string, cep: string, rua: string, numero: string, bairro: string, cidade: string, estado: string) => {
       const token = localStorage.getItem('token');
       api.defaults.headers.Authorization = `Bearer ${token}`
-      console.log('estado', estado);
       
       try {
         await register(nome, cnpj, telefone, email, categoria, cep, rua, numero, bairro, cidade, estado);

@@ -87,21 +87,40 @@ function HomePage() {
     ];
 
     return (
-        <Layout style={{ minHeight: '100vh' }}>
-            <Header style={{ position: 'sticky', top: 0, zIndex: 1, width: '100%' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <span style={{ fontSize: 12, color: 'white' }}>credencial: {user.username}</span>
-                    <Button type="primary" onClick={handleLogout} danger>
-                        <IoLogOutOutline /> Sair
-                    </Button>
+        <Layout style={{minHeight:'100vh'}}>
+            <Header
+                style={{
+                position: 'sticky',
+                top: 0,
+                zIndex: 1,
+                width: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                }}>
+                <div>
+                    <span style={{ fontSize: 12, color: 'white' }}>
+                        credencial: {user.username}
+                    </span>
                 </div>
+                <Button
+                    type="primary"
+                    onClick={handleLogout}
+                    danger
+                    style={{ marginLeft: 'auto' }}>
+                    <IoLogOutOutline /> Sair
+                </Button>
             </Header>
-            <Content style={{ padding: '0 16px' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', margin: '20px 0 10px 0' }}>
+            <Content style={{ padding: '0 48px' }}>
+                <div style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    alignItems: 'center',
+                    margin: '20px 0 10px 0' 
+                    }}>
                     <h1>Cadastro de Fornecedores</h1>
-                    <ModalCadastro />
+                    <ModalCadastro/>
                 </div>
-                <Table columns={columns} dataSource={data} rowKey="id" pagination={{ pageSize: 8 }} />
+                <Table columns={columns} dataSource={data} rowKey="id" pagination={{pageSize:8}}/>
             </Content>
         </Layout>
     );

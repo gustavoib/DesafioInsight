@@ -36,7 +36,7 @@ function ModalCadastro() {
                 message.error('Erro ao cadastrar fornecedor!');
             }
         } catch (error) {
-            message.error('Erro ao cadastrar fornecedor');
+            message.error('Erro ao validar campos do formulário!');
         }
     }
 
