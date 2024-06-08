@@ -14,6 +14,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+// Classe de configuração de segurança do Spring Security para autenticação de usuário no sistema com JWT Token
 @Configuration
 @EnableWebSecurity
 public class SecurityConfigurations {

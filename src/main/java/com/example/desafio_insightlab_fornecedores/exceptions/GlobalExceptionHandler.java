@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 
 import java.util.stream.Collectors;
 
+// Classe de tratamento de exceções globais do sistema
+// A anotação @ControllerAdvice indica que a classe é um componente de Spring que pode tratar exceções em todos os controllers do sistema
 @ControllerAdvice
 public class GlobalExceptionHandler {
 

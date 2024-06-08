@@ -11,6 +11,8 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.UUID;
 
+// Modelo de usuários do sistema com Spring Data JPA e Hibernate
+// A classe é uma entidade que representa a tabela de usuários no banco de dados
 @Entity
 @Getter
 @Setter
@@ -18,7 +20,7 @@ import java.util.UUID;
 @NoArgsConstructor
 @Table(name = "users")
 public class UsersModel implements UserDetails {
-    /* Os usuários da aplicação seriam os responsáveis por realizar as operações de CRUD sobre os fornecedores*/
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")

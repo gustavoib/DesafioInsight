@@ -13,6 +13,8 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.web.bind.annotation.*;
 
+// Controlador de autenticação do sistema
+// A anotação @RestController indica que a classe é um controller do Spring Boot
 @RestController
 @RequestMapping("/auth")
 @CrossOrigin(origins = "*")

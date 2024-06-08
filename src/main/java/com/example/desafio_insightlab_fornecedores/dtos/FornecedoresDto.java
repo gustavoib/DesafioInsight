@@ -3,6 +3,8 @@ package com.example.desafio_insightlab_fornecedores.dtos;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 
+// DTO de fornecedores
+// O DTO é uma classe que representa um objeto de transferência de dados para fornecedores
 public record FornecedoresDto(
         @NotBlank String nome,
         @NotBlank String cnpj,

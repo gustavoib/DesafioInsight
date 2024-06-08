@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.UUID;
 
+// Controlador de fornecedores do sistema
+// A anotação @RestController indica que a classe é um controller do Spring Boot
 @RestController
 @RequestMapping("fornecedores")
 @CrossOrigin(origins = "*")

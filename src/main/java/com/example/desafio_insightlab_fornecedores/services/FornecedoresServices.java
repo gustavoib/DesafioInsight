@@ -9,19 +9,19 @@ import com.example.desafio_insightlab_fornecedores.utils.Utils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.List;
 import java.util.UUID;
 
+// Classe de serviço para manipulação de fornecedores no sistema
+// Aqui os requisitos de negócio (no caso os requisitos do desafio) são implementados
 @Service
 public class FornecedoresServices {
     @Autowired
     private FornecedoresRepository fornecedoresRepository;
 
-    /* listar todos os fornecedores - requisito do desafio */
     public List<FornecedoresModel> getAllFornecedores() {
         List<FornecedoresModel> fornecedores = fornecedoresRepository.findAll();
         if (fornecedores.isEmpty()) {
@@ -40,13 +40,11 @@ public class FornecedoresServices {
         return fornecedores;
     }
 
-    /* listar um fornecedor específico - requisito do desafio */
     public FornecedoresModel getOneFornecedores(UUID id) {
         return fornecedoresRepository.findById(id)
                 .orElseThrow(FornecedoresNotFoundException::new);
     }
 
-    /* cadastrar um fornecedor - requisito do desafio */
     public FornecedoresModel saveFornecedores(FornecedoresDto fornecedorRecordDto) {
         Utils.validateCnpj(fornecedorRecordDto.cnpj());
         Utils.validateTelefone(fornecedorRecordDto.telefone());
@@ -57,7 +55,6 @@ public class FornecedoresServices {
         return fornecedoresRepository.save(fornecedoresModel);
     }
 
-    /* editar um fornecedor - requisito do desafio */
     public FornecedoresModel updateFornecedores(UUID id, FornecedoresDto fornecedorRecordDto) {
         FornecedoresModel fornecedor = fornecedoresRepository.findById(id)
                 .orElseThrow(FornecedoresNotFoundException::new);
@@ -72,7 +69,6 @@ public class FornecedoresServices {
         }
     }
 
-    /* deleta um fornecedor - requisito do desafio */
     public void deleteFornecedores(UUID id) {
         fornecedoresRepository.findById(id)
                 .orElseThrow(FornecedoresNotFoundException::new);

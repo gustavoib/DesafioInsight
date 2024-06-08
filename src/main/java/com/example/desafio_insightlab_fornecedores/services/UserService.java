@@ -7,6 +7,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
+// Classe de serviço que carraga os detalhes do usuário durante autenticação
 @Service
 public class UserService implements UserDetailsService {
     @Autowired

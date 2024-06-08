@@ -13,6 +13,7 @@ import java.time.Instant;
 import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 
+// Classe de serviço para autenticação de usuário no sistema com Spring Security e JWT Token
 @Service
 public class TokenService {
 

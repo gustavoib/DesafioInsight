@@ -15,6 +15,7 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import java.io.IOException;
 
+// Classe de filtro de segurança para autenticação de usuário no sistema com Spring Security e JWT Token
 @Component
 public class SecurityFilter extends OncePerRequestFilter {
 

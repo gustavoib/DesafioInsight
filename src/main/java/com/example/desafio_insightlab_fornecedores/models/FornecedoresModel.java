@@ -9,6 +9,8 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.UUID;
 
+// Modelo de fornecedores do sistema com Spring Data JPA e Hibernate
+// A classe é uma entidade que representa a tabela de fornecedores no banco de dados
 @Getter
 @Setter
 @Entity
