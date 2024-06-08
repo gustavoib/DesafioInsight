@@ -3,6 +3,8 @@ import { AuthContext } from '../context/auth';
 import { Select, Form, Button, Modal, Input, message } from 'antd';
 import { IoAdd } from 'react-icons/io5';
 import InputMask from 'antd-mask-input';
+import TypedInputNumber from 'antd/es/input-number';
+import { InputNumber } from 'antd/lib';
 
 interface ModalCadastroProps {
     updatePage: () => void;
@@ -151,12 +153,11 @@ function ModalCadastro( {updatePage} : ModalCadastroProps ) {
             </Form.Item>
 
             <Form.Item label="Rua" name="rua" rules={[{ required: true, message: 'Por favor, escreva uma Rua.' }]}>
-                <Input 
-                   />
+                <Input />
             </Form.Item>
 
             <Form.Item label="Número" name="numero" rules={[{ required: true, message: 'Por favor, escreva um Número.' }]}>
-                <Input/>
+                <InputNumber/>
             </Form.Item>
 
             <Form.Item label="Bairro" name="bairro" rules={[{ required: true, message: 'Por favor, escreva um Bairro.' }]}>
