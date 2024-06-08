@@ -156,7 +156,7 @@ function ModalCadastro( {updatePage} : ModalCadastroProps ) {
             </Form.Item>
 
             <Form.Item label="Número" name="numero" rules={[{ required: true, message: 'Por favor, escreva um Número.' }]}>
-                <InputNumber/>
+                <InputNumber style={{ width: '100%' }} min={1} />
             </Form.Item>
 
             <Form.Item label="Bairro" name="bairro" rules={[{ required: true, message: 'Por favor, escreva um Bairro.' }]}>
