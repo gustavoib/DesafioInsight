@@ -68,7 +68,7 @@ function ModalEdit({ id, updatePage }: ModalEditProps) {
                 message.error('Erro ao editar fornecedor!');
             }
         } catch (error) {
-            message.error('Erro ao validar campos do formulário!');
+            console.error('Erro ao validar campos do formulário!');
         }
     };
 
