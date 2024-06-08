@@ -33,8 +33,7 @@ A API permite o gerenciamento de fornecedores com as seguintes operações:
 | GET    | /fornecedores/list/{id}              | Listagem de fornecedores específicos                 |
 | PUT    | /fornecedores/update/{id}            | Atualização de fornecedores                          |
 | DELETE | /fornecedores/delete/{id}            | Exclusão de fornecedores                             |
-| GET    | /fornecedores/list/order/{order}     | Ordenar fornecedores por data de cadastro (asc e desc)|
-| GET    | /fornecedores/list/category/{category}| Filtrar fornecedores por categoria                   |
+
 
 **Atenção**: Para realizar operações de cadastro, atualização, exclusão e listagem de fornecedores, é necessário autenticar-se na aplicação. Utilize as credenciais de administrador fornecidas abaixo:
 
