@@ -1,9 +1,8 @@
 import { useState, useContext } from 'react';
 import { AuthContext } from '../context/auth';
-import { Select, Form, Button, Modal, Input, message } from 'antd';
+import { Select, Form, Button, Modal, Input, message, InputNumber } from 'antd';
 import { IoAdd } from 'react-icons/io5';
 import InputMask from 'antd-mask-input';
-import { InputNumber } from 'antd/lib';
 
 interface ModalCadastroProps {
     updatePage: () => void;
