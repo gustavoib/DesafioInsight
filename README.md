@@ -1,30 +1,11 @@
-# React + TypeScript + Vite
+# Desafio Insight Lab - Cadastro de Fornecedores
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este repositório contém a solução **front-end** para o desafio proposto para a vaga de bolsista graduando full-stack no Insight Lab.
 
-Currently, two official plugins are available:
+## Descrição do Desafio
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+O desafio consiste em criar uma aplicação que permita o cadastro de fornecedores e outras operações de CRUD, além de ser aberto para a criação de novas funcionalidades.
 
-## Expanding the ESLint configuration
+## Detalhes da Solução
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
-```
-
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+A aplicação foi desenvolvida utilizando React, cumprindo a restrição do desafio para a implementação do front-end, com typescript e foi inicializada com vite. A montagem das telas foi feita usando componentes do AntDesign, além de blibliotecas como react-router-dom, axios, etc.
