@@ -3,7 +3,6 @@ import { AuthContext } from '../context/auth';
 import { Select, Form, Button, Modal, Input, message } from 'antd';
 import { IoAdd } from 'react-icons/io5';
 import InputMask from 'antd-mask-input';
-import TypedInputNumber from 'antd/es/input-number';
 import { InputNumber } from 'antd/lib';
 
 interface ModalCadastroProps {
