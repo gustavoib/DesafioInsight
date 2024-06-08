@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
 import { AuthContext } from '../context/auth';
-import { Select, Form, Button, Modal, Input, message, InputNumber } from 'antd';
+import { Select, Form, Button, Modal, Input, message } from 'antd';
 import { IoAdd } from 'react-icons/io5';
 import InputMask from 'antd-mask-input';
 
@@ -155,7 +155,7 @@ function ModalCadastro( {updatePage} : ModalCadastroProps ) {
             </Form.Item>
 
             <Form.Item label="Número" name="numero" rules={[{ required: true, message: 'Por favor, escreva um Número.' }]}>
-                <InputNumber style={{ width: '100%' }} min={1} />
+                <Input />
             </Form.Item>
 
             <Form.Item label="Bairro" name="bairro" rules={[{ required: true, message: 'Por favor, escreva um Bairro.' }]}>
