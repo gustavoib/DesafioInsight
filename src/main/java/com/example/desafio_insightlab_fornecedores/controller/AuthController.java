@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.*;
 // A anotação @RestController indica que a classe é um controller do Spring Boot
 @RestController
 @RequestMapping("/auth")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "https://desafio-fullsatck-insight.netlify.app")
 public class AuthController {
 
     @Autowired
