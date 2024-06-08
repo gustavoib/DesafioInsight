@@ -1,4 +1,4 @@
-package com.example.desafio_insightlab_fornecedores.security;
+package com.example.desafio_insightlab_fornecedores.config;
 
 import com.example.desafio_insightlab_fornecedores.repositories.UserRepository;
 import com.example.desafio_insightlab_fornecedores.services.TokenService;

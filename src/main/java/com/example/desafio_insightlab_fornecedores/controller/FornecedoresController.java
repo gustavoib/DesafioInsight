@@ -16,7 +16,7 @@ import java.util.UUID;
 // A anotação @RestController indica que a classe é um controller do Spring Boot
 @RestController
 @RequestMapping("fornecedores")
-@CrossOrigin(origins = "*")
+@CrossOrigin(origins = "https://desafio-fullsatck-insight.netlify.app")
 public class FornecedoresController {
 
     @Autowired

@@ -28,15 +28,6 @@ public class FornecedoresServices {
             throw new FornecedoresNotFoundException("Nenhum fornecedor cadastrado");
         }
 
-        ZoneId databaseTimeZone = ZoneId.of("UTC");
-        ZoneId brazilTimeZone = ZoneId.of("America/Sao_Paulo");
-        fornecedores.forEach(fornecedor -> {
-            LocalDateTime createdAt = fornecedor.getCreatedAt();
-            ZonedDateTime createdAtInUTC = createdAt.atZone(databaseTimeZone);
-            ZonedDateTime createdAtInBrazil = createdAtInUTC.withZoneSameInstant(brazilTimeZone);
-            fornecedor.setCreatedAt(createdAtInBrazil.toLocalDateTime());
-        });
-
         return fornecedores;
     }
 
