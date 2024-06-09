@@ -16,4 +16,6 @@ Boot para a construção do back-end do sistema. O front-end da proposta deverá
 desenvolvido utilizando o framework React.
 
 ### Acesso:
+Para acessar a aplicação, clique no link: [Cadastro de fornecedores](https://desafio-fullsatck-insight.netlify.app)
+
 Para acessar cada uma das implementações do desafio, API/back-end e interface, navegue, respectivamente, para as ```branchs``` -> ```dev-backend``` e ```dev-frontend```.
